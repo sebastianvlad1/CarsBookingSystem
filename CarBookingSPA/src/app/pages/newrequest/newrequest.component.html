@@ -1,0 +1,37 @@
+<div class="row justify-content-md-center">
+        <div class="container col-md-auto">
+
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+            <div class="form-group">
+                <input type="file" (change)="uploadFile($event)">
+            </div>
+
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="name" formControlName="name">
+            </div>
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="reason of request" formControlName="reason">
+            </div>
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="pickup date" formControlName="pickupDate">
+            </div>
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="pickup time" formControlName="pickupTime">
+            </div>
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="return date" formControlName="returnDate">
+            </div>
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="return time" formControlName="returnTime">
+            </div>
+            <div class="form-group input-group-lg">
+                <input class="form-control" placeholder="destination" formControlName="destination">
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-danger btn-block btn-lg">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
