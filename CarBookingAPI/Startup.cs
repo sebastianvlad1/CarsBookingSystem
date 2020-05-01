@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CarBookingAPI.Models;
+using CarBookingAPI.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace CarBookingAPI
 {
@@ -25,6 +28,14 @@ namespace CarBookingAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DatabaseSettings>(
+                Configuration.GetSection(nameof(DatabaseSettings)));
+
+            services.AddSingleton<IDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+            services.AddSingleton<RequestsService>();
+
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "myCors",
@@ -33,7 +44,7 @@ namespace CarBookingAPI
                                     builder.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
                                 });
             });
-
+            
             services.AddControllers();
         
         }
