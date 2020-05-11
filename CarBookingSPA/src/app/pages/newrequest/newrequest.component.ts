@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newrequest',
@@ -21,7 +22,7 @@ export class NewrequestComponent implements OnInit {
     {"value": "reason3"},
     {"value": "reason4"}
   ];
-  constructor(public fb: FormBuilder, private httpClient: HttpClient, private datePipe: DatePipe) { 
+  constructor(public fb: FormBuilder, private httpClient: HttpClient, private datePipe: DatePipe, private router: Router) { 
     this.form = this.fb.group({
       name: [''],
       reason: [''],
@@ -52,6 +53,7 @@ export class NewrequestComponent implements OnInit {
 
     this.httpClient.post('http://localhost:5000/api/request/addrequest', formData).subscribe(() => {
       console.log("am adaugat.");
+      this.router.navigate(['/dashboard']);
     });
   }
 }
