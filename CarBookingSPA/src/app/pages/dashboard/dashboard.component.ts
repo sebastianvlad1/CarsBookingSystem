@@ -19,8 +19,6 @@ export class DashboardComponent implements OnInit{
 
     _service.getall().subscribe((data: any[]) => {
       this.requests = data;
-      console.log(this.requests);
-
     });
   }
     ngOnInit(){

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RequestService } from 'app/_services/RequestService/request.service';
 
 @Component({
     selector: 'user-cmp',
@@ -7,6 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserComponent implements OnInit{
-    ngOnInit(){
-    }
+    tabelname: string = "Total Rezervari";
+    requests: any = [];
+
+constructor(public _service: RequestService) { 
+
+    _service.getall().subscribe((data: any[]) => {
+    this.requests = data;
+    });
+}
+ngOnInit(){
+}
+
+send(order){
+    console.log(order);
+    //this._service.getall(order);
+}
 }

@@ -46,7 +46,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <i class="fa fa-calendar-o"></i> Vezi rezervari
+          <a [routerLink]="" (click)="send('Accepted')"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <i class="fa fa-refresh"></i> Vezi rezervari
+          <a [routerLink]="" (click)="send('Waiting')"><i class="fa fa-refresh"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
@@ -99,7 +99,51 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <i class="fa fa-clock-o"></i> Vezi rezervari
+          <a [routerLink]="" (click)="send('Cancelled')"><i class="fa fa-clock-o"></i> Vezi rezervari</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- table -->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">{{tabelname}}</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>
+                ID
+              </th>
+              <th>Name</th>
+              <th>Reason of request</th>
+              <th>Pick-up date</th>
+              <th>Pick-up time</th>
+              <th>Return Date</th>
+              <th>Return time</th>
+              <th>Destination</th>
+              <th>Status</th>
+            </thead>
+            <tbody>
+               <tr *ngFor="let data of requests; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{data.name}}</td>
+                <td>{{data.reason}}</td>
+                <td>{{data.pickupDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{data.pickupTime}}</td>
+                <td>{{data.returnDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{data.returnTime}}</td>
+                <td>{{data.destination}}</td>
+                <td>{{data.status}}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
