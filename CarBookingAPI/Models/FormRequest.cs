@@ -1,3 +1,4 @@
+using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -8,10 +9,13 @@ namespace CarBookingAPI.Models{
         public string Id { get; set; }
         public string name {get; set;}
         public string reason {get; set;}
-        public string pickupDate {get; set;}
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime pickupDate {get; set;}
         public string pickupTime {get; set;}
-        public string returnDate {get; set;}
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        public DateTime returnDate {get; set;}
         public string returnTime {get; set;}
         public string destination {get; set;}
+        public string status {get; set;}
     }
 }

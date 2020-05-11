@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-newrequest',
@@ -9,7 +10,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class NewrequestComponent implements OnInit {
   form: FormGroup;
-  constructor(public fb: FormBuilder, private httpClient: HttpClient) { 
+  destinations = [
+    {"value":"Oradea"},
+    {"value":"Timisoara"},
+    {"value":"Arad"}
+  ];
+  reasons = [
+    {"value": "reason1"},
+    {"value": "reason2"},
+    {"value": "reason3"},
+    {"value": "reason4"}
+  ];
+  constructor(public fb: FormBuilder, private httpClient: HttpClient, private datePipe: DatePipe) { 
     this.form = this.fb.group({
       name: [''],
       reason: [''],
@@ -23,15 +35,18 @@ export class NewrequestComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  transformDate(date) {
+    return this.datePipe.transform(date, 'yyyy-MM-dd');
+  }
 
   submitForm() {
     console.log(this.form.value);
     var formData = new FormData();
     formData.append('name', this.form.get('name').value);
     formData.append('reason', this.form.get('reason').value);
-    formData.append('pickupDate', this.form.get('pickupDate').value);
+    formData.append('pickupDate', this.transformDate(this.form.get('pickupDate').value));
     formData.append('pickupTime', this.form.get('pickupTime').value);
-    formData.append('returnDate', this.form.get('returnDate').value);
+    formData.append('returnDate', this.transformDate(this.form.get('returnDate').value));
     formData.append('returnTime', this.form.get('returnTime').value);
     formData.append('destination', this.form.get('destination').value);
 

@@ -12,7 +12,7 @@ namespace CarBookingAPI.Services{
             _requests = database.GetCollection<FormRequest>(settings.RequestsCollectionName);
         }
         public List<FormRequest> GetAll() => 
-            _requests.Find(_ => true).ToList();
+            _requests.Find(_ => true).SortByDescending(e => e.Id).ToList();
 
         public void Create(FormRequest req){
             _requests.InsertOne(req);

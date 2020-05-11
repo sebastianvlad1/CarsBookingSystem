@@ -10,7 +10,12 @@ import { UserComponent }            from '../../pages/user/user.component';
 
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { NewrequestComponent } from 'app/pages/newrequest/newrequest.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -18,7 +23,11 @@ import { NewrequestComponent } from 'app/pages/newrequest/newrequest.component';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   declarations: [
     DashboardComponent,
