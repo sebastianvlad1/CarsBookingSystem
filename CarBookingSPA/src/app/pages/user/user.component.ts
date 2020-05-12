@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef } from '@angular/core';
 import { RequestService } from 'app/_services/RequestService/request.service';
 import { EventService } from 'app/_services/EventService/event.service';
 import { Subscription } from 'rxjs';
@@ -14,10 +14,12 @@ export class UserComponent implements OnInit{
     tabelname: string = "Total Rezervari";
     requests: any = [];
     filterSubscription: Subscription;
-constructor(public _service: RequestService, public _eventService: EventService, private cdr: ChangeDetectorRef) { 
+    nr: number = 1;
+    @ViewChild('cards') cards: ElementRef;
 
-    _service.getall().subscribe((data: any[]) => {
-    this.requests = data;
+    constructor(public _service: RequestService, public _eventService: EventService, private cdr: ChangeDetectorRef) { 
+        _service.getall().subscribe((data: any[]) => {
+        this.requests = data;
     });
 
     this.filterSubscription =  _eventService.data.subscribe((data) => {
@@ -28,17 +30,16 @@ constructor(public _service: RequestService, public _eventService: EventService,
 
 ngOnInit(){
 }
-
+ngAfterViewInit(){
+    
+}
 ngOnDistroy(){
     this.filterSubscription.unsubscribe();
 }
 
 send(order){
-    //this._eventService.emitData(order);
-    console.log(order);
-    //this._service.getall(order);
-    if(!this.cdr['destroyed']){
-        this.cdr.detectChanges();
-    }
+
 }
+
+
 }

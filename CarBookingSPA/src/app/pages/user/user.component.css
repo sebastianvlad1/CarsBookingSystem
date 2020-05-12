@@ -1,5 +1,5 @@
 .currentcard {
-    background-color: #f6f3e7;
+    background-color: #f8f3dd;
     transition: transform .2s; /* Animation */
     transform: scale(1.1);
   }
