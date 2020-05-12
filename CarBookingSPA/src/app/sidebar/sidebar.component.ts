@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from 'app/_services/EventService/event.service';
 
 
 export interface RouteInfo {
@@ -24,7 +25,10 @@ export const ROUTES: RouteInfo[] = [
 
 export class SidebarComponent implements OnInit {
     public menuItems: any[];
+    constructor(){
+    }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
     }
+
 }

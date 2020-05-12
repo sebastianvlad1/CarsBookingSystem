@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-3 col-md-6 col-sm-6">
-    <div class="card card-stats">
+    <div class="card card-stats currentcard scalehover">
       <div class="card-body ">
         <div class="row">
           <div class="col-5 col-md-4">
@@ -21,12 +21,13 @@
         <hr>
         <div class="stats">
           <a routerLink="/newrequest"><i class="fa fa-refresh"></i> Fa o rezervare</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('New')"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-sm-6">
-    <div class="card card-stats">
+    <div class="card card-stats scalehover">
       <div class="card-body ">
         <div class="row">
           <div class="col-5 col-md-4">
@@ -46,13 +47,13 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="send('Accepted')"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('Accepted')"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 col-sm-6">
-    <div class="card card-stats">
+    <div class="card card-stats scalehover">
       <div class="card-body ">
         <div class="row">
           <div class="col-5 col-md-4">
@@ -72,14 +73,14 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="send('Waiting')"><i class="fa fa-refresh"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('Waiting')"><i class="fa fa-refresh"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
   </div>
 
   <div class="col-lg-3 col-md-6 col-sm-6">
-    <div class="card card-stats">
+    <div class="card card-stats scalehover">
       <div class="card-body ">
         <div class="row">
           <div class="col-5 col-md-4">
@@ -99,7 +100,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="send('Cancelled')"><i class="fa fa-clock-o"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('Cancelled')"><i class="fa fa-clock-o"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
