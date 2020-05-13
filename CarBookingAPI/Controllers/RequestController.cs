@@ -18,9 +18,14 @@ namespace CarBookingAPI.Controllers{
             _service.Create(formReq);
             return Ok();
         }
-        [HttpGet("getall")]
-        public List<FormRequest> getAllRequests(){
-            return _service.GetAll();
+        [HttpGet("getall/{filter?}")]
+        public List<FormRequest> getAllRequests([FromRoute]string filter = ""){
+            return _service.GetAll(filter);
+        }
+        [HttpGet("getnumbers")]
+        public ActionResult getNumbers(){
+            var obj =_service.getNumbers();
+            return Ok(obj);
         }
     }
 }

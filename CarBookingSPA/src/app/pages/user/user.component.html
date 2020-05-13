@@ -11,7 +11,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Total rezervari</p>
-              <p class="card-title">15
+              <p class="card-title">{{this.countRequests.total}}
                 <p>
             </div>
           </div>
@@ -20,7 +20,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="this._eventService.emitData('New'); this.nr=1"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="getallrequests(); this.nr=1;tabelname='Total Rezervari';"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Rezervari aceptate</p>
-              <p class="card-title">13
+              <p class="card-title">{{this.countRequests.accepted}}
                 <p>
             </div>
           </div>
@@ -46,7 +46,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="this._eventService.emitData('Accepted'); this.nr=2"><i class="fa fa-calendar-o"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('Accepted'); this.nr=2; tabelname='Rezervari Acceptate';"><i class="fa fa-check-circle"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
@@ -63,7 +63,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">In asteptare</p>
-              <p class="card-title">2
+              <p class="card-title">{{this.countRequests.waiting}}
                 <p>
             </div>
           </div>
@@ -72,7 +72,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="this._eventService.emitData('Waiting'); this.nr=3"><i class="fa fa-refresh"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('Waiting'); this.nr=3;tabelname='In Asteptare';"><i class="fa fa-clock-o"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Rezervari respinse</p>
-              <p class="card-title">3
+              <p class="card-title">{{this.countRequests.cancelled}}
                 <p>
             </div>
           </div>
@@ -99,7 +99,7 @@
       <div class="card-footer ">
         <hr>
         <div class="stats">
-          <a [routerLink]="" (click)="this._eventService.emitData('Cancelled'); this.nr=4"><i class="fa fa-clock-o"></i> Vezi rezervari</a>
+          <a [routerLink]="" (click)="this._eventService.emitData('Cancelled'); this.nr=4; tabelname='Rezervari Respinse';"><i class="fa fa-ban"></i> Vezi rezervari</a>
         </div>
       </div>
     </div>
@@ -140,7 +140,7 @@
                 <td>{{data.returnDate | date:'dd/MM/yyyy'}}</td>
                 <td>{{data.returnTime}}</td>
                 <td>{{data.destination}}</td>
-                <td>{{data.status}}</td>
+                <td [ngClass]="getCustomCss()">{{data.status}}</td>
               </tr>
             </tbody>
           </table>

@@ -11,4 +11,10 @@ export class RequestService {
   getall(){
     return this.http.get("http://localhost:5000/api/request/getall");
   }
+  filterRequests(filter){
+    return this.http.get("http://localhost:5000/api/request/getall/" + filter);
+  }
+  countRequests(){
+    return this.http.get("http://localhost:5000/api/request/getnumbers");
+  }
 }

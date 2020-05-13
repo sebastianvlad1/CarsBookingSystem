@@ -15,30 +15,52 @@ export class UserComponent implements OnInit{
     requests: any = [];
     filterSubscription: Subscription;
     nr: number = 1;
+    countRequests: any;
     @ViewChild('cards') cards: ElementRef;
 
     constructor(public _service: RequestService, public _eventService: EventService, private cdr: ChangeDetectorRef) { 
         _service.getall().subscribe((data: any[]) => {
-        this.requests = data;
-    });
+            this.requests = data;
+        });
+
+        _service.countRequests().subscribe((counts) => {
+            this.countRequests = counts;
+        });
 
     this.filterSubscription =  _eventService.data.subscribe((data) => {
-        console.log("eu sunt in profile, am primit " + data); // cautarea in baza de date
-        
+        _service.filterRequests(data).subscribe((req) => {
+            this.requests = req;
+            this.cdr.detectChanges();
+        });
     });
+}
+
+getallrequests(){
+    this._service.getall().subscribe((data: any[]) => {
+        this.requests = data;
+    });
+}
+getCustomCss(){
+    if(this.nr == 1){
+        return '';
+    }else if(this.nr == 2){
+        return 'accepted';
+    }else if(this.nr == 3)
+    {
+        return 'waiting'
+    }else if(this.nr == 4){
+        return 'cancelled';
+    }
 }
 
 ngOnInit(){
 }
+
 ngAfterViewInit(){
     
 }
 ngOnDistroy(){
     this.filterSubscription.unsubscribe();
-}
-
-send(order){
-
 }
 
 
