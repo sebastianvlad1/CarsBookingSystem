@@ -16,6 +16,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { RegisterComponent } from 'app/pages/register/register/register.component';
+import { LoginComponent } from 'app/pages/login/login/login.component';
 
 @NgModule({
   imports: [
@@ -32,7 +34,9 @@ import { MatSelectModule } from '@angular/material/select';
   declarations: [
     DashboardComponent,
     UserComponent,
-    NewrequestComponent
+    NewrequestComponent,
+    RegisterComponent,
+    LoginComponent
   ]
 })
 

@@ -16,6 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
+import { RegisterComponent } from './pages/register/register/register.component';
+import { LoginComponent } from './pages/login/login/login.component';
 
 @NgModule({
   declarations: [

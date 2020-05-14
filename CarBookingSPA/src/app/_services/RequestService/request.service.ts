@@ -17,4 +17,10 @@ export class RequestService {
   countRequests(){
     return this.http.get("http://localhost:5000/api/request/getnumbers");
   }
+  register(model: any){
+    return this.http.post("http://localhost:5000/api/auth/register", model);
+  }
+  login(model: any){
+    return this.http.post("http://localhost:5000/api/auth/login", model);
+  }
 }

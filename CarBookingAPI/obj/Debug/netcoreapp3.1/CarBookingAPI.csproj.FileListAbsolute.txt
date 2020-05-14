@@ -23,3 +23,9 @@ D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\MongoDB.Driver.Core.dl
 D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\MongoDB.Libmongocrypt.dll
 D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\SharpCompress.dll
 D:\Cars Booking App\CarBookingAPI\obj\Debug\netcoreapp3.1\CarBookingAPI.csproj.CopyComplete
+D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\JWT.dll
+D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Cars Booking App\CarBookingAPI\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
