@@ -1,0 +1,13 @@
+
+.scale { transition: all .2s ease-in-out;
+    margin: 10px;
+}
+.scale:hover { transform: scale(1.8);
+    cursor: pointer;
+}
+.accept:hover {
+    color: green;
+}
+.remove:hover {
+    color: red;
+}

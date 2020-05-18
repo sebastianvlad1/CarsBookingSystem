@@ -26,7 +26,11 @@ namespace CarBookingAPI.Controllers{
            }else{
                 return Ok();
            }
-            
+        }
+        [HttpPost("addeditor")]
+        public ActionResult addEditor([FromForm] EditUser editUser){
+            _service.addEditor(editUser);
+            return Ok();
         }
     }
 }

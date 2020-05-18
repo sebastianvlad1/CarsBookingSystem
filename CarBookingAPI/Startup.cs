@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using CarBookingAPI.Models;
 using CarBookingAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -35,7 +36,8 @@ namespace CarBookingAPI
                 sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
             services.AddSingleton<RequestsService>();
-
+            services.AddAutoMapper(typeof(Startup));
+            
             services.AddCors(options =>
             {
                 options.AddPolicy(name: "myCors",

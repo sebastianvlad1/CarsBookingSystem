@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Tabel useri</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  ID
+                </th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Actions</th>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let data of requests; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{data.username}}</td>
+                  <td>{{data.role}}</td>
+                  <td *ngIf="data.role == 'User'"><button type="button" class="btn btn-success" (click)="makeEditor(data)">Make editor</button></td>
+                  <td *ngIf="data.role == 'Editor'"><button type="button" class="btn btn-success" (click)="makeUser(data)">Make user</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

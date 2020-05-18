@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Tabel</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  ID
+                </th>
+                <th>Name</th>
+                <th>Reason of request</th>
+                <th>Pick-up date</th>
+                <th>Pick-up time</th>
+                <th>Return Date</th>
+                <th>Return time</th>
+                <th>Destination</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </thead>
+              <tbody>
+                 <tr *ngFor="let data of requests; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{data.name}}</td>
+                  <td>{{data.reason}}</td>
+                  <td>{{data.pickupDate | date:'dd/MM/yyyy'}}</td>
+                  <td>{{data.pickupTime}}</td>
+                  <td>{{data.returnDate | date:'dd/MM/yyyy'}}</td>
+                  <td>{{data.returnTime}}</td>
+                  <td>{{data.destination}}</td>
+                  <td>{{data.status}}</td>
+                  <td><a (click)="accept(data)">
+                        <i class="nc-icon nc-check-2 scale accept"></i>
+                    </a>
+                    <a (click)="remove(data)">
+                      <i class="nc-icon nc-simple-remove scale remove"></i>
+                  </a>
+                 </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

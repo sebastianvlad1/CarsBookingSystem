@@ -18,6 +18,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { RegisterComponent } from 'app/pages/register/register/register.component';
 import { LoginComponent } from 'app/pages/login/login/login.component';
+import { AdmindashboardComponent } from 'app/pages/admindashboard/admindashboard/admindashboard.component';
+import { AdminpanelComponent } from 'app/pages/adminpanel/adminpanel/adminpanel.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { LoginComponent } from 'app/pages/login/login/login.component';
     UserComponent,
     NewrequestComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AdmindashboardComponent,
+    AdminpanelComponent
   ]
 })
 

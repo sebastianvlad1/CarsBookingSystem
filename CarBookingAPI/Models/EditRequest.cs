@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace CarBookingAPI.Models
 {
-    public class User
+    public class EditRequest
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        public string Username { get; set; }
-        public string Password {get; set;}
-        public string Role {get; set;}
+        public string status {get; set;}
     }
 }

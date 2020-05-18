@@ -30,7 +30,9 @@ export class UserComponent implements OnInit{
     this.filterSubscription =  _eventService.data.subscribe((data) => {
         _service.filterRequests(data).subscribe((req) => {
             this.requests = req;
-            this.cdr.detectChanges();
+            if (!this.cdr['destroyed']) {
+                this.cdr.detectChanges();
+            }
         });
     });
 }

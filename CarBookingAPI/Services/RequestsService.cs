@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using CarBookingAPI.Models;
 using MongoDB.Driver;
 using System;
-
+using MongoDB.Bson;
 namespace CarBookingAPI.Services{
     public class RequestsService{
         private readonly IMongoCollection<FormRequest> _requests;
@@ -38,6 +38,21 @@ namespace CarBookingAPI.Services{
         public User Login(User user){
             return _users.Find(x => x.Username.Equals(user.Username) && x.Password.Equals(user.Password)).Limit(1).SingleOrDefault();
 
+        }
+        public UpdateResult editRequest(EditRequest req){
+            ObjectId id = new ObjectId(req.Id);
+            var filter = Builders<FormRequest>.Filter.Eq("_id", id);
+            var update = Builders<FormRequest>.Update.Set("status", req.status);
+            return _requests.UpdateOne(filter, update);
+        }
+        public List<User> GetAllUsers(){
+            return _users.Find(_ => true).SortByDescending(e => e.Id).ToList();
+        }
+        public UpdateResult addEditor(EditUser editUser){
+            ObjectId id = new ObjectId(editUser.Id);
+            var filter = Builders<User>.Filter.Eq("_id", id);
+            var update = Builders<User>.Update.Set("Role", editUser.Role);
+            return _users.UpdateOne(filter, update);
         }
     }
 }
