@@ -17,28 +17,35 @@
                     <mat-datepicker #pickupDate></mat-datepicker>
                 </mat-form-field>
             </div>
-
             <div class="form-group input-group-lg">
                 <mat-form-field style="width: 100%;">
-                <mat-label>Pickup Time</mat-label>
-                <input matInput formControlName="pickupTime">
-                </mat-form-field>
+                    <mat-label>Pickup Time</mat-label>
+                    <mat-select formControlName="pickupTime" (selectionChange)="filterCars()">
+                      <mat-option *ngFor="let d of hours" [value]="d.value">
+                          {{d.value}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </div>
-
-            <div class="form-group input-group-lg">
-                <mat-form-field>
-                    <mat-label>Return Date</mat-label>
-                    <input matInput [matDatepicker]="returnDate" formControlName="returnDate">
-                    <mat-datepicker-toggle matSuffix [for]="returnDate"></mat-datepicker-toggle>
-                    <mat-datepicker #returnDate></mat-datepicker>
-                </mat-form-field>
-            </div>
-
             <div class="form-group input-group-lg">
                 <mat-form-field style="width: 100%;">
-                <mat-label>Return Time</mat-label>
-                <input matInput formControlName="returnTime">
-                </mat-form-field>
+                    <mat-label>Cars</mat-label>
+                    <mat-select formControlName="car">
+                      <mat-option *ngFor="let d of cars" [value]="d.nr_inmatriculare">
+                          {{d.nr_inmatriculare}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="form-group input-group-lg">
+                <mat-form-field style="width: 100%;">
+                    <mat-label>Return Time</mat-label>
+                    <mat-select formControlName="returnTime" (selectionChange)="filterCars()">
+                      <mat-option *ngFor="let d of hours" [value]="d.value">
+                          {{d.value}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </div>
             
             <div class="form-group input-group-lg">

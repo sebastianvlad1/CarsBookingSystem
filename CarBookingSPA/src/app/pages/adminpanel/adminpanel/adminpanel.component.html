@@ -1,4 +1,48 @@
 <div class="row">
+  <div class="col-md-12">
+    <div class="row justify-content-md-center">
+      <div class="container col-md-auto" style="width: 40%;">
+
+        <form [formGroup]="form" (ngSubmit)="submitForm()">
+          <p style="color: red;" *ngIf="this.adaugat">Masina adaugata.</p> 
+          <div class="form-group input-group-lg">
+              <mat-form-field style="width: 100%;">
+              <mat-label>Nr. Inmatriculare</mat-label>
+              <input matInput formControlName="nr_inmatriculare">
+              </mat-form-field>
+          </div>
+          <div class="form-group" >
+              <button class="btn btn-danger btn-block btn-lg">Adauga masina</button>
+          </div>
+        </form>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title"> CARS</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <th>
+                ID
+              </th>
+              <th>Numar Inmatriculare</th>
+            </thead>
+            <tbody>
+               <tr *ngFor="let data of cars; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{data.nr_inmatriculare}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">

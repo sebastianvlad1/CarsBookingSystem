@@ -19,6 +19,7 @@
               <th>Return time</th>
               <th>Destination</th>
               <th>Status</th>
+              <th>Car</th>
             </thead>
             <tbody>
                <tr *ngFor="let data of requests; let i = index">
@@ -31,6 +32,7 @@
                 <td>{{data.returnTime}}</td>
                 <td>{{data.destination}}</td>
                 <td>{{data.status}}</td>
+                <td>{{data.car}}</td>
               </tr>
             </tbody>
           </table>

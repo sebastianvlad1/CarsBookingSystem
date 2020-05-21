@@ -7,19 +7,23 @@ namespace CarBookingAPI.Services{
     public class RequestsService{
         private readonly IMongoCollection<FormRequest> _requests;
         private readonly IMongoCollection<User> _users;
+        private readonly IMongoCollection<Car> _cars;
         public RequestsService(IDatabaseSettings settings){
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
             _requests = database.GetCollection<FormRequest>(settings.RequestsCollectionName);
             _users = database.GetCollection<User>(settings.UsersCollectionName);
+            _cars = database.GetCollection<Car>(settings.CarsCollectionName);
         }
         public List<FormRequest> GetAll(string filter){
             if(filter.Equals("")){
                 return _requests.Find(_ => true).SortByDescending(e => e.Id).ToList();
             }
             return _requests.Find(req => true && req.status.Equals(filter)).SortByDescending(e => e.Id).ToList();
-
+        }
+        public List<FormRequest> GetReqByDate(DateTime date){
+            return _requests.Find(req => true && req.pickupDate == date).SortByDescending(e => e.Id).ToList();
         }
         public void Create(FormRequest req){
             _requests.InsertOne(req);
@@ -53,6 +57,12 @@ namespace CarBookingAPI.Services{
             var filter = Builders<User>.Filter.Eq("_id", id);
             var update = Builders<User>.Update.Set("Role", editUser.Role);
             return _users.UpdateOne(filter, update);
+        }
+        public void CreateCar(Car car){
+            _cars.InsertOne(car);
+        }
+        public List<Car> GetAllCars(){
+            return _cars.Find(_ => true).SortByDescending(e => e.Id).Limit(15).ToList();
         }
     }
 }

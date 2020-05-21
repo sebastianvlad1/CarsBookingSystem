@@ -32,4 +32,10 @@ export class RequestService {
   addEditor(model: any){
     return this.http.post("http://localhost:5000/api/auth/addeditor", model);
   }
+  addCar(model: any){
+    return this.http.post("http://localhost:5000/api/request/addcar", model);
+  }
+  getAllCars(){
+    return this.http.get("http://localhost:5000/api/request/getallcars");
+  }
 }
